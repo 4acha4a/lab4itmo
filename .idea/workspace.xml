@@ -6,7 +6,13 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00ea36c8-ae0a-4926-93bb-2e8ae40ac767" name="Default Changelist" comment="" />
+    <list default="true" id="00ea36c8-ae0a-4926-93bb-2e8ae40ac767" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lab3/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab3/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lab3/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab3/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +33,7 @@
   </component>
   <component name="ProjectId" id="1Uzd8KOAuBl0hxsBh5icboSnCxw" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -83,8 +90,17 @@
       <workItem from="1578142371798" duration="12335000" />
       <workItem from="1579653344232" duration="2302000" />
       <workItem from="1582817463134" duration="5634000" />
-      <workItem from="1583358543664" duration="25653000" />
+      <workItem from="1583358543664" duration="29385000" />
+      <workItem from="1584183427763" duration="1013000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;commit 2&quot;">
+      <created>1583936294938</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583936294939</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,10 +111,16 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;commit 2&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;commit 2&quot;" />
   </component>
 </project>

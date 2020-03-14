@@ -74,10 +74,13 @@ public abstract class Entity implements Moveable, Damage {
     }
     @Override
     public int hashCode (){
-        return super.hashCode();
+        int distance = (int)Math.sqrt(getX()*getX()+getY()*getY()+getZ()*getZ());
+        return distance;
     }
     @Override
     public boolean equals(java.lang.Object o){
-        return super.equals(o);
+        if (name.equals(o.toString()))
+            return true;
+        else return false;
     }
 }

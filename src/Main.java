@@ -4,7 +4,7 @@ public class Main {
         Shorty [] sh = new Shorty[5];
         Object [] ob = new Object[5];
         Porridge [] pr = new Porridge[5];
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < sh.length; i++) {
             sh[i] = new Shorty("Коротышка " + (i+1));
             ob[i] = new Object("Мебель");
             pr[i] = new Porridge("Комочек каши");
@@ -12,8 +12,8 @@ public class Main {
         Shorty Donut = new Shorty("Плюющийся пончик");
         int k = 0;
             while (k<1) {
-                for (int i = 0; i < 5; i++) {
-                    for (int j = 0; j < 5; j++) {
+                for (int i = 0; i < sh.length; i++) {
+                    for (int j = 0; j < sh.length; j++) {
                         if (k<1) {
                             pr[j].moveinroom();
                             ob[j].moveinroom();
@@ -75,5 +75,6 @@ public class Main {
         if (KnowAll.distance(Table)<=5) {
             Table.damageothers(KnowAll);
         }
+        System.out.println("Кизару");
     }
 }
