@@ -2,22 +2,30 @@
 public class Shorty extends Entity {
     Type type = Type.SHORTY;
     public int hp = 100;
-    private final int power = 20;
+    protected static final int power = 20;
 
-    public Shorty(String name) {
+    public Shorty(String name) throws CountException {
         super(name);
+        ShortyCount++;
+        if (ShortyCount>MaxCount) {
+            throw new CountException("Количество коротышек не может быть больше " + MaxCount);
+        }
     }
-    public Shorty(String name,double x, double y,double z) {
-        super(name);
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public Shorty(String name,double x, double y,double z) throws CoordinateOutOfBoundsException,CountException {
+        super(name,x,y,z);
+        ShortyCount++;
+        if (ShortyCount>MaxCount) {
+            throw new CountException("Количество коротышек не может быть больше " + MaxCount);
+        }
     }
-
     private boolean isAngry = false;
+    private final static int MaxCount = 10;
+    private static int ShortyCount = 0;
 
-    public void setAngry() {
-        isAngry = true;
+    public void setAngry(boolean b) {
+        isAngry = b;
+        if (isAngry)
+        System.out.println(this + " разозлился! Ему надо выплеснуть злость на что-то");
     }
     public int getHP(){
         return hp;
@@ -27,28 +35,57 @@ public class Shorty extends Entity {
         return isAngry;
     }
 
-    public void moveinroom() {
+    @Override
+    public void moveinroom(){
         x += Math.round(Math.random() * 20 - 10);
         checkboundsX();
         y += Math.round(Math.random() * 20 - 10);
         checkboundsY();
         z += Math.round(Math.random() * 20 - 10);
         checkboundsZ();
-        System.out.println(this + " машет руками и ногами ");
+        System.out.println(this + " летит по комнате");
     }
-    public void avoid (Shorty s) {
-        System.out.println("О нет, "+ this + " слишком близко к " + s);
-        System.out.println(this + " пытается избежать столкновения с " + s);
+    public void avoid (Entity e) {
+        System.out.println("О нет, " + this + " слишком близко к " + e);
+        System.out.println(this + " пытается избежать столкновения с " + e);
     }
-    public void avoid (Porridge p) {
-        System.out.println("О нет, "+ this + " слишком близко к " + p);
-        System.out.println(this + " пытается избежать столкновения с " + p);
+    public void avoidFight(Shorty s){
+        System.out.println(this + " пытается избежать стычки с " + s);
+        System.out.println("Кажется, столкновение неизбежно");
     }
-    public void avoid (Object o) {
-        System.out.println("О нет, "+ this + " слишком близко к " + o);
-        System.out.println(this + " пытается избежать столкновения с " + o);
+    public void approach(Shorty s){
+        System.out.println(this + " приближается к " + s + " со словами: ");
+        System.out.println("'Иди сюда, гадёныш!'");
+        x += Math.round((s.getX()-getX())*0.5);
+        checkboundsX();
+        y += Math.round((s.getY()-getY())*0.5);
+        checkboundsY();
+        z += Math.round((s.getZ()-getZ())*0.5);
+        checkboundsZ();
     }
-    protected void spin() {
+    public void stop(){
+        System.out.println(this + " застыл в воздухе");
+        int x = (int)Math.round(Math.random()*3);
+        switch (x) {
+            case 0:
+                System.out.println(this + " лежит вверх головой");
+                break;
+            case 1:
+                System.out.println(this + " лежит вниз головой");
+                break;
+            case 2:
+                System.out.println(this + " лежит в горизонтальном положении");
+                break;
+            case 3:
+                System.out.println(this + " лежит в наклонном положении ");
+                break;
+        }
+        if (getZ()>90)
+            System.out.println(this + " лежит под потолком");
+        if (getZ()<10)
+            System.out.println(this + " лежит недалеко от пола");
+    }
+    public void spin(){
         System.out.println(this + " перевернулся в воздухе");
     }
     
@@ -70,4 +107,5 @@ public class Shorty extends Entity {
     public boolean equals(java.lang.Object o){
         return super.equals(o);
     }
+
 }

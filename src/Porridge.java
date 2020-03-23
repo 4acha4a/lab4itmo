@@ -1,9 +1,23 @@
 public class Porridge extends Entity {
-    public Porridge(String name){
+    public Porridge(String name) throws CountException{
         super(name);
+        PorridgeCount++;
+        if (PorridgeCount>MaxCount) {
+            throw new CountException("Количество комочков каши не может быть больше " + MaxCount);
+        }
     }
+    public Porridge(String name,double x, double y,double z) throws CoordinateOutOfBoundsException,CountException {
+        super(name,x,y,z);
+        PorridgeCount++;
+        if (PorridgeCount>MaxCount) {
+            throw new CountException("Количество комочков каши не может быть больше " + MaxCount);
+        }
+    }
+
+    private static int PorridgeCount = 0;
+    private final static int MaxCount = 10;
     Type type = Type.FOOD;
-    private final int power = 100;
+    private static final int power = 100;
     @Override
     public void damageothers(Shorty s){
         s.hp-=power;
@@ -31,4 +45,5 @@ public class Porridge extends Entity {
     public boolean equals(java.lang.Object o){
         return super.equals(o);
     }
+
 }

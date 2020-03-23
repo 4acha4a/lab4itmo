@@ -1,22 +1,43 @@
 public abstract class Entity implements Moveable, Damage {
-    public Entity(String name){
+    public Entity(String name) {
         this.name = name;
         setX();
         setY();
         setZ();
     }
+    public Entity(String name,double x, double y,double z) throws CoordinateOutOfBoundsException {
+        this.name = name;
+        this.x = x;
+        if (this.x>100)
+            throw new CoordinateOutOfBoundsException("x не может быть больше " + size);
+        if (this.x<0)
+            throw new CoordinateOutOfBoundsException("x не может быть меньше 0");
+        this.y = y;
+        if (this.y>100)
+            throw new CoordinateOutOfBoundsException("y не может быть больше " + size);
+        if (this.y<0)
+            throw new CoordinateOutOfBoundsException("y не может быть меньше 0");
+        this.z = z;
+        if (this.z>100)
+            throw new CoordinateOutOfBoundsException("z не может быть больше " + size);
+        if (this.z<0)
+            throw new CoordinateOutOfBoundsException("z не может быть меньше 0");
+    }
+
     String name;
     protected double x;
     protected double y;
     protected double z;
-    private final int size = 100;
+    protected final int size = 100;
 
     public void setX() {
-        x = Math.round(Math.random()*100);
+        x = Math.round(Math.random() * 100);
     }
+
     public double getX() {
         return x;
     }
+
     public double checkboundsX() {
         if (x > size - 1) {
             x = x - 20;
@@ -26,6 +47,7 @@ public abstract class Entity implements Moveable, Damage {
         }
         return x;
     }
+
     public double checkboundsY() {
         if (y > size - 1) {
             y = y - 20;
@@ -35,6 +57,7 @@ public abstract class Entity implements Moveable, Damage {
         }
         return y;
     }
+
     public double checkboundsZ() {
         if (z > size - 1) {
             z = z - 20;
@@ -44,43 +67,41 @@ public abstract class Entity implements Moveable, Damage {
         }
         return z;
     }
-    public void setY () {
-        y = Math.round(Math.random()*100);
+
+    public void setY() {
+        y = Math.round(Math.random() * 100);
     }
-    public double getY () {
+
+    public double getY() {
         return y;
     }
-    public void setZ () {
-        z = Math.round(Math.random()*100);
+
+    public void setZ() {
+        z = Math.round(Math.random() * 100);
     }
-    public double getZ () {
+
+    public double getZ() {
         return z;
     }
-    public double distance (Object o){
-        double distance = Math.sqrt(Math.pow((getX()-o.getX()),2)+Math.pow((getY()-o.getY()),2)+Math.pow((getZ()-o.getZ()),2));
-        return distance;
+
+    public double distance(Entity e) {
+        return Math.sqrt(Math.pow((getX() - e.getX()), 2) + Math.pow((getY() - e.getY()), 2) + Math.pow((getZ() - e.getZ()), 2));
     }
-    public double distance (Shorty s){
-        double distance = Math.sqrt(Math.pow((getX()-s.getX()),2)+Math.pow((getY()-s.getY()),2)+Math.pow((getZ()-s.getZ()),2));
-        return distance;
-    }
-    public double distance (Porridge p){
-        double distance = Math.sqrt(Math.pow((getX()-p.getX()),2)+Math.pow((getY()-p.getY()),2)+Math.pow((getZ()-p.getZ()),2));
-        return distance;
-    }
+
     @Override
-    public String toString() {
+    public String toString() throws NullPointerException {
+        if (name==null) throw new NullPointerException("Имя не может быть null");
         return name;
     }
+
     @Override
-    public int hashCode (){
-        int distance = (int)Math.sqrt(getX()*getX()+getY()*getY()+getZ()*getZ());
-        return distance;
+    public int hashCode() {
+        return (int) Math.sqrt(getX() * getX() + getY() * getY() + getZ() * getZ());
     }
+
     @Override
-    public boolean equals(java.lang.Object o){
-        if (name.equals(o.toString()))
-            return true;
-        else return false;
+    public boolean equals(java.lang.Object o) {
+        Entity one = (Entity) o;
+        return name.equals(one.name)&&(this.hashCode() == o.hashCode()) && (o.getClass() == this.getClass());
     }
 }
